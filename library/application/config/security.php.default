@@ -1,0 +1,32 @@
+<?php
+
+/**
+ * Security Configuration
+ *
+ * @var    array
+ */
+return [
+
+	/**
+	 * Configuration data for CSRF protection within Nerd
+	 *
+	 * @see    Nerd\Form
+	 * @var    array
+	 */
+	'csrf' => [
+
+		/**
+		 * Is automatics CSRF protection enabled?
+		 *
+		 * @var    boolean
+		 */
+		'enabled' => false,
+
+		/**
+		 * Which post field do we look for the CSRF token?
+		 *
+		 * @var    string
+		 */
+		'field'   => '@@state',
+	],
+];

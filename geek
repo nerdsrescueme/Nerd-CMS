@@ -1,0 +1,5 @@
+<?php
+
+namespace Geek;
+
+include __DIR__.'/library/nerd/bootstrap.php';

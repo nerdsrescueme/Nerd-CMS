@@ -1,0 +1,260 @@
+<?php
+
+/**
+ * [!!] Note: If you want to make modifications to the default configurations,
+ * it is highly recommended to copy this file into your applications config
+ * folder and change them there.
+ *
+ * Doing this will allow you to upgrade your installation without losing custom
+ * configurations.
+ */
+
+// Aliasing rules
+use Nerd\DB;
+
+/**
+ * Database configuration
+ *
+ * @var    array
+ */
+return [
+
+	/**
+	 * Default database connection
+	 *
+	 * The name of your default database connection key. This connection will be
+	 * the default connection for all database operations, unless a different
+	 * connection is specified when performing the operation.
+	 *
+	 * @var    string
+	 */
+	'default' => 'application',
+
+	/**
+	 * Database connections
+	 *
+	 * All of the database connections used by your application.
+	 *
+	 * Supported drivers: http://php.net/manual/en/pdo.drivers.php
+	 *
+	 * Each connection set is grouped by the environment that utilizes it. If
+	 * you are using the same connection in multiple environments, simply add
+	 * it to each set.
+	 *
+	 * @var    array
+	 */
+	'connections' => [
+
+		/**
+		 * Environment 'localhost' connections
+		 *
+		 * @var    array
+		 */
+		'localhost' => [
+
+			/**
+			 * Application database
+			 *
+			 * @var    array
+			 */
+			'application' => [
+
+				/**
+				 * Driver
+				 *
+				 * Select which driver you wish to use for accessing the
+				 * database in which you installed your application. You can
+				 * provide either the pdo string, or use the constants defined
+				 * in DB for unified and simple referencing.
+				 *
+				 * @link   http://php.net/manual/en/pdo.drivers.php
+				 * @var    string
+				 */
+				'driver' => DB::DRIVER_MYSQL,
+
+				/**
+				 * DSN Prefix
+				 *
+				 * Some drivers that use DSN strings, like PDO, may need a dsn
+				 * prefix if the prefix differs from the driver name.
+				 *
+				 * This parameter is ignored in SQLite
+				 *
+				 * @var    string
+				 */
+				'dsnprefix' => '', 
+
+				/**
+				 * DSN suffix
+				 *
+				 * If a database driver that uses a DSN, like PDO, needs
+				 * additional parameters when connecting, then supply them here
+				 * in the format of: parameter1=value1; parameter2=value2;
+				 *
+				 * This parameter is ignored in SQLite.
+				 *
+				 * @var    string
+				 */
+				'dsnsuffix' => '', 
+
+				/**
+				 * Database host
+				 *
+				 * This is the hostname for where the database system can be
+				 * accessed. In most cases this will simply be 'loclahost'.
+				 *
+				 * Some databsaes, like SQLite, that are file based, do not use
+				 * a hostname.
+				 *
+				 * @var    string
+				 */
+				'hostname' => 'localhost', 
+
+				/**
+				 * Secure connection
+				 *
+				 * If your database server is protected by a secure connection
+				 * and therefore requires one in order to connect, then set this
+				 * value to true.
+				 *
+				 * Drivers that support this feature: 'mysql'
+				 *
+				 * @var    boolean
+				 */
+				'ssl' => false, 
+
+				/**
+				 * Host port
+				 *
+				 * If your database server is located on a non-default port,
+				 * then set this to the port number or leave it empty if none.
+				 *
+				 * Some databases, like SQLite, that are file based, do not use
+				 * a port.
+				 *
+				 * @var    string
+				 */
+				'port' => '', 
+
+				/**
+				 * Conneciton timeout
+				 *
+				 * The timeout limiit for the connection before a timeout
+				 * occurs. If not set, then it fallsback on the internal timeout
+				 * from php or the server.
+				 *
+				 * Some databases, like SQLite, that are file based, do not use
+				 * a timeout.
+				 *
+				 * @var    integer
+				 */
+				'timeout' => 3, 
+
+				/**
+				 * Database socket
+				 *
+				 * if your connecting to a database through a socket, then
+				 * specify the path here or leave it empty for none.
+				 *
+				 * Some databases, like SQLite, that are file based, do not use
+				 * a socket.
+				 *
+				 * @var    string
+				 */
+				'socket' => '', 
+
+				/**
+				 * Connection delay
+				 *
+				 * This option delays creating the actual database connection
+				 * until the first query call within the instance.
+				 *
+				 * @var    boolean
+				 */
+				'delay' => true, 
+
+				/**
+				 * Persistent connection
+				 *
+				 * Select whenever you want to use a persistent connection for
+				 * when connecting to the databsae. Note, that not all drivers
+				 * support this feature and will fallback to regular connections
+				 * even if this option is enabled.
+				 *
+				 * Some databases, like SQLite, that are file based, do not
+				 * bennefit from persistent connections.
+				 *
+				 * @var    boolean
+				 */
+				'persistent' => false, 
+
+				/**
+				 * Database name
+				 *
+				 * Name of the database in which your application is installed.
+				 *
+				 * File based databases, like SQLite, will use this value as the
+				 * name of the file the database is stored in. Provide the full
+				 * name of the database like: atom.sqlite3
+				 *
+				 * SQLite may use ':memory:' as well.
+				 *
+				 * @var    string
+				 */
+				'database' => 'application', 
+
+				/**
+				 * Database user
+				 *
+				 * Username used for accessing the database, the user set here
+				 * must have permissions to access the database set above.
+				 *
+				 * Some databases, like SQLite, that are file based, do not use
+				 * a username.
+				 *
+				 * @var    string
+				 */
+				'username' => 'root', 
+
+				/**
+				 * Password
+				 *
+				 * This is the password associated with the user set above. If
+				 * the user doesn't require a password then leave this empty.
+				 *
+				 * If the SQLite driver is used and the password is set, then it
+				 * will act as an encryption key for opening the database. Note
+				 * that this does not work for SQLite when used inconjunction
+				 * with PDO.
+				 *
+				 * @var    string
+				 */
+				'password' => '', 
+
+				/**
+				 * Table prefix
+				 *
+				 * If your database tables have a prefix, then set this to the
+				 * value of that prefix.
+				 *
+				 * @var    string
+				 */
+				'prefix' => '',
+
+				/**
+				 * Additional options
+				 *
+				 * Any additional PDO options that you wish to be provided
+				 * during the instantiation process of your database class.
+				 *
+				 * @var    array
+				 */
+				'options' => [],
+
+			],
+
+		],
+		
+	],
+
+];
