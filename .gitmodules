@@ -1,0 +1,6 @@
+[submodule "library/nerd"]
+	path = library/nerd
+	url = https://github.com/nerdsrescueme/Core.git
+[submodule "library/geek"]
+	path = library/geek
+	url = https://github.com/nerdsrescueme/Geek.git
