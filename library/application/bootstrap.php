@@ -7,6 +7,11 @@ use Nerd\Config
   , Nerd\Environment;
 
 /**
+ * Get and register the Composer autoloader as a secondary loader.
+ */
+require LIBRARY_PATH.'/../vendor/autoload.php';
+
+/**
  * Here you could do some magic for multiple applications by dynamically switching
  * the application namespace for this request. To create another application you
  * would simply create another subfolder in LIBRARY_PATH with its own Application
