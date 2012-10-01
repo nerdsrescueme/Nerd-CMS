@@ -2,6 +2,7 @@
 ## Composer
 #################
 composer.phar
+vendor/*
 
 #################
 ## Eclipse
