@@ -75,7 +75,7 @@ SQL;
 		$layout = $form->findByAttribute('id', 'page_layout_id')->remove();
 
 		// Steal options from current layout form object.
-		$options = $layout->options();
+		$options = $layout->option('options');
 		unset($options['type'], $options['maxlength'], $layout);
 		$options['options'] = [
 			'one' => 'One',
