@@ -9,7 +9,7 @@ use Nerd\Config
 /**
  * Get and register the Composer autoloader as a secondary loader.
  */
-require LIBRARY_PATH.'/../vendor/autoload.php';
+require join(DS, [\Nerd\LIBRARY_PATH, '..', 'vendor', 'autoload.php']);
 
 /**
  * Here you could do some magic for multiple applications by dynamically switching
@@ -17,8 +17,8 @@ require LIBRARY_PATH.'/../vendor/autoload.php';
  * would simply create another subfolder in LIBRARY_PATH with its own Application
  * class...
  */
-define('APPLICATION_NS', 'application');
-define('STORAGE_PATH', LIBRARY_PATH.DS.'application/storage');
+define('Nerd\APPLICATION_NS', 'application');
+define('Nerd\STORAGE_PATH', join(DS, [\Nerd\LIBRARY_PATH, 'application', 'storage']));
 
 /**
  * Setup the current environment
