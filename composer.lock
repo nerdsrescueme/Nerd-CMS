@@ -1,18 +1,81 @@
 {
-    "hash": "a1c2c668d4c86ba506af578165f452ba",
+    "hash": "206de0771aaad1cd98c8b0846a79eb0d",
     "packages": [
         {
-            "name": "phpunit/php-code-coverage",
-            "version": "1.2.2",
+            "name": "mageekguy/atoum",
+            "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "git://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "1.2.2"
+                "url": "https://github.com/mageekguy/atoum.git",
+                "reference": "1184f051583d3dcd00390c24f56961e17da36958"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/sebastianbergmann/php-code-coverage/zipball/1.2.2",
-                "reference": "1.2.2",
+                "url": "https://github.com/mageekguy/atoum/zipball/1184f051583d3dcd00390c24f56961e17da36958",
+                "reference": "1184f051583d3dcd00390c24f56961e17da36958",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "time": "1349711100",
+            "bin": [
+                "bin/atoum"
+            ],
+            "type": "library",
+            "installation-source": "source",
+            "autoload": {
+                "classmap": [
+                    "classes/"
+                ]
+            },
+            "license": [
+                "BSD"
+            ],
+            "authors": [
+                {
+                    "name": "Frédéric Hardy",
+                    "email": "frederic.hardy@atoum.org",
+                    "homepage": "http://blog.mageekbox.net"
+                },
+                {
+                    "name": "François Dussert",
+                    "email": "francois.dussert@atoum.org"
+                },
+                {
+                    "name": "Gérald Croes",
+                    "email": "gerald.croes@atoum.org"
+                },
+                {
+                    "name": "Julien Bianchi",
+                    "email": "julien.bianchi@atoum.org"
+                },
+                {
+                    "name": "Ludovic Fleury",
+                    "email": "ludovic.fleury@atoum.org"
+                }
+            ],
+            "description": "Simple modern and intuitive unit testing framework for PHP 5.3+",
+            "homepage": "http://www.atoum.org",
+            "keywords": [
+                "TDD",
+                "atoum",
+                "test",
+                "unit testing"
+            ]
+        },
+        {
+            "name": "phpunit/php-code-coverage",
+            "version": "1.2.3",
+            "source": {
+                "type": "git",
+                "url": "git://github.com/sebastianbergmann/php-code-coverage.git",
+                "reference": "1.2.3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/sebastianbergmann/php-code-coverage/zipball/1.2.3",
+                "reference": "1.2.3",
                 "shasum": ""
             },
             "require": {
@@ -27,12 +90,12 @@
                 "ext-spl": "*",
                 "ext-xdebug": ">=2.0.5"
             },
-            "time": "2012-09-20 00:00:00",
+            "time": "2012-10-05 00:00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
-                "files": [
-                    "PHP/CodeCoverage/Autoload.php"
+                "classmap": [
+                    "PHP/"
                 ]
             },
             "include-path": [
@@ -58,27 +121,27 @@
         },
         {
             "name": "phpunit/php-file-iterator",
-            "version": "1.3.2",
+            "version": "1.3.3",
             "source": {
                 "type": "git",
                 "url": "git://github.com/sebastianbergmann/php-file-iterator.git",
-                "reference": "1.3.2"
+                "reference": "1.3.3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/sebastianbergmann/php-file-iterator/zipball/1.3.2",
-                "reference": "1.3.2",
+                "url": "https://github.com/sebastianbergmann/php-file-iterator/zipball/1.3.3",
+                "reference": "1.3.3",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.2.7"
             },
-            "time": "2012-09-22 00:00:00",
+            "time": "2012-10-05 09:06:25",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
-                "files": [
-                    "File/Iterator/Autoload.php"
+                "classmap": [
+                    "File/"
                 ]
             },
             "include-path": [
@@ -103,27 +166,27 @@
         },
         {
             "name": "phpunit/php-text-template",
-            "version": "1.1.2",
+            "version": "1.1.3",
             "source": {
                 "type": "git",
                 "url": "git://github.com/sebastianbergmann/php-text-template.git",
-                "reference": "1.1.2"
+                "reference": "1.1.3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/sebastianbergmann/php-text-template/zipball/1.1.2",
-                "reference": "1.1.2",
+                "url": "https://github.com/sebastianbergmann/php-text-template/zipball/1.1.3",
+                "reference": "1.1.3",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.2.7"
             },
-            "time": "2012-09-23 00:00:00",
+            "time": "2012-10-05 09:17:21",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
-                "files": [
-                    "Text/Template/Autoload.php"
+                "classmap": [
+                    "Text/"
                 ]
             },
             "include-path": [
@@ -147,27 +210,27 @@
         },
         {
             "name": "phpunit/php-timer",
-            "version": "1.0.3",
+            "version": "1.0.4",
             "source": {
                 "type": "git",
                 "url": "git://github.com/sebastianbergmann/php-timer.git",
-                "reference": "1.0.3"
+                "reference": "1.0.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/sebastianbergmann/php-timer/zipball/1.0.3",
-                "reference": "1.0.3",
+                "url": "https://github.com/sebastianbergmann/php-timer/zipball/1.0.4",
+                "reference": "1.0.4",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.2.7"
             },
-            "time": "2012-09-23 00:00:00",
+            "time": "2012-10-05 09:09:13",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
-                "files": [
-                    "PHP/Timer/Autoload.php"
+                "classmap": [
+                    "PHP/"
                 ]
             },
             "include-path": [
@@ -191,28 +254,28 @@
         },
         {
             "name": "phpunit/php-token-stream",
-            "version": "1.1.4",
+            "version": "1.1.5",
             "source": {
                 "type": "git",
                 "url": "git://github.com/sebastianbergmann/php-token-stream.git",
-                "reference": "1.1.4"
+                "reference": "1.1.5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/sebastianbergmann/php-token-stream/zipball/1.1.4",
-                "reference": "1.1.4",
+                "url": "https://github.com/sebastianbergmann/php-token-stream/zipball/1.1.5",
+                "reference": "1.1.5",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.2.7",
                 "ext-tokenizer": "*"
             },
-            "time": "2012-09-23 00:00:00",
+            "time": "2012-10-05 09:17:52",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
-                "files": [
-                    "PHP/Token/Stream/Autoload.php"
+                "classmap": [
+                    "PHP/"
                 ]
             },
             "include-path": [
@@ -236,38 +299,38 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "3.7.1",
+            "version": "3.7.x-dev",
             "source": {
                 "type": "git",
                 "url": "git://github.com/sebastianbergmann/phpunit.git",
-                "reference": "3.7.1"
+                "reference": "ed9f20dab1cfc2a9f89cc77a520ae5576723ca45"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/sebastianbergmann/phpunit/zipball/3.7.1",
-                "reference": "3.7.1",
+                "url": "https://github.com/sebastianbergmann/phpunit/zipball/ed9f20dab1cfc2a9f89cc77a520ae5576723ca45",
+                "reference": "ed9f20dab1cfc2a9f89cc77a520ae5576723ca45",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.3",
-                "phpunit/php-file-iterator": ">=1.3.1@stable",
-                "phpunit/php-text-template": ">=1.1.1@stable",
-                "phpunit/php-code-coverage": ">=1.2.1@stable",
-                "phpunit/php-timer": ">=1.0.2@stable",
-                "phpunit/phpunit-mock-objects": ">=1.2.0@stable",
-                "symfony/yaml": ">=2.1.0@stable",
                 "ext-dom": "*",
                 "ext-pcre": "*",
                 "ext-reflection": "*",
-                "ext-spl": "*"
+                "ext-spl": "*",
+                "phpunit/php-file-iterator": ">=1.3.1",
+                "phpunit/php-text-template": ">=1.1.1",
+                "phpunit/php-code-coverage": ">=1.2.1",
+                "phpunit/php-timer": ">=1.0.2",
+                "phpunit/phpunit-mock-objects": ">=1.2.0",
+                "symfony/yaml": ">=2.1.0"
             },
             "suggest": {
-                "phpunit/php-invoker": ">=1.1.0@stable",
                 "ext-json": "*",
                 "ext-simplexml": "*",
-                "ext-tokenizer": "*"
+                "ext-tokenizer": "*",
+                "phpunit/php-invoker": ">=1.1.0"
             },
-            "time": "2012-09-20 05:41:03",
+            "time": "1349709119",
             "bin": [
                 "composer/bin/phpunit"
             ],
@@ -277,10 +340,10 @@
                     "dev-master": "3.7.x-dev"
                 }
             },
-            "installation-source": "dist",
+            "installation-source": "source",
             "autoload": {
-                "files": [
-                    "PHPUnit/Autoload.php"
+                "classmap": [
+                    "PHPUnit/"
                 ]
             },
             "include-path": [
@@ -307,16 +370,16 @@
         },
         {
             "name": "phpunit/phpunit-mock-objects",
-            "version": "1.2.0",
+            "version": "1.2.1",
             "source": {
                 "type": "git",
                 "url": "git://github.com/sebastianbergmann/phpunit-mock-objects.git",
-                "reference": "1.2.0"
+                "reference": "1.2.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/sebastianbergmann/phpunit-mock-objects/zipball/1.2.0",
-                "reference": "1.2.0",
+                "url": "https://github.com/sebastianbergmann/phpunit-mock-objects/zipball/1.2.1",
+                "reference": "1.2.1",
                 "shasum": ""
             },
             "require": {
@@ -328,12 +391,12 @@
             "suggest": {
                 "ext-soap": "*"
             },
-            "time": "2012-09-19 00:00:00",
+            "time": "2012-10-05 00:00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
-                "files": [
-                    "PHPUnit/Framework/MockObject/Autoload.php"
+                "classmap": [
+                    "PHPUnit/"
                 ]
             },
             "include-path": [
@@ -409,7 +472,8 @@
 
     ],
     "minimum-stability": "stable",
-    "stability-flags": [
-
-    ]
+    "stability-flags": {
+        "phpunit/phpunit": 20,
+        "mageekguy/atoum": 20
+    }
 }
