@@ -1,5 +1,5 @@
 {
-    "hash": "206de0771aaad1cd98c8b0846a79eb0d",
+    "hash": "914eb48d82b1c9b0a0442e2235efafb6",
     "packages": [
         {
             "name": "mageekguy/atoum",
@@ -7,18 +7,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/mageekguy/atoum.git",
-                "reference": "1184f051583d3dcd00390c24f56961e17da36958"
+                "reference": "fda57caeba82b4e8d88d36d104faa5403d39dec9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/mageekguy/atoum/zipball/1184f051583d3dcd00390c24f56961e17da36958",
-                "reference": "1184f051583d3dcd00390c24f56961e17da36958",
+                "url": "https://github.com/mageekguy/atoum/zipball/fda57caeba82b4e8d88d36d104faa5403d39dec9",
+                "reference": "fda57caeba82b4e8d88d36d104faa5403d39dec9",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.3"
             },
-            "time": "1349711100",
+            "time": "2012-10-10 04:58:42",
             "bin": [
                 "bin/atoum"
             ],
@@ -303,12 +303,12 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/sebastianbergmann/phpunit.git",
-                "reference": "ed9f20dab1cfc2a9f89cc77a520ae5576723ca45"
+                "reference": "994f8c18380de3a5ae572fb2099f0f1a89142d3b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/sebastianbergmann/phpunit/zipball/ed9f20dab1cfc2a9f89cc77a520ae5576723ca45",
-                "reference": "ed9f20dab1cfc2a9f89cc77a520ae5576723ca45",
+                "url": "https://github.com/sebastianbergmann/phpunit/zipball/994f8c18380de3a5ae572fb2099f0f1a89142d3b",
+                "reference": "994f8c18380de3a5ae572fb2099f0f1a89142d3b",
                 "shasum": ""
             },
             "require": {
@@ -330,7 +330,7 @@
                 "ext-tokenizer": "*",
                 "phpunit/php-invoker": ">=1.1.0"
             },
-            "time": "1349709119",
+            "time": "1349802111",
             "bin": [
                 "composer/bin/phpunit"
             ],

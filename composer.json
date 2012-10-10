@@ -1,6 +1,5 @@
 {
     "require": {
-        "phpunit/phpunit": "3.7.*-dev",
-        "mageekguy/atoum": "dev-master"
+        "phpunit/phpunit": "3.7.*-dev"
     }
 }
