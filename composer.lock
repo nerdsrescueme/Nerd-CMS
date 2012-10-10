@@ -1,6 +1,9 @@
 {
-    "hash": "c8da9c23f0457453d143a6d581079e4b",
+    "hash": "17cc147b2efa7826edd2133d21e45fa3",
     "packages": [
+
+    ],
+    "packages-dev": [
         {
             "name": "phpunit/php-code-coverage",
             "version": "1.2.3",
@@ -404,7 +407,6 @@
             "homepage": "http://symfony.com"
         }
     ],
-    "packages-dev": null,
     "aliases": [
 
     ],
