@@ -1,5 +1,5 @@
 {
-    "hash": "975b352d62ebbb0439c7fc32f2ad9ae9",
+    "hash": "f17fc9237f34f71073ae3a4c58fbcc3a",
     "packages": [
 
     ],
@@ -45,6 +45,61 @@
                 }
             ],
             "description": "A script to automatically fix Symfony Coding Standard"
+        },
+        {
+            "name": "pdepend/pdepend",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "git://github.com/pdepend/pdepend.git",
+                "reference": "1.1.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/pdepend/pdepend/zipball/1.1.0",
+                "reference": "1.1.0",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.3"
+            },
+            "time": "2012-09-12 04:09:19",
+            "bin": [
+                "src/bin/pdepend"
+            ],
+            "type": "library",
+            "installation-source": "dist",
+            "description": "Official version of pdepend to be handled with Composer"
+        },
+        {
+            "name": "phpmd/phpmd",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "git://github.com/phpmd/phpmd.git",
+                "reference": "34cfbf382dd2a62b2bb3573a9fb3737c8f5a0eec"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/phpmd/phpmd/zipball/34cfbf382dd2a62b2bb3573a9fb3737c8f5a0eec",
+                "reference": "34cfbf382dd2a62b2bb3573a9fb3737c8f5a0eec",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "pdepend/pdepend": "*"
+            },
+            "time": "1350026494",
+            "bin": [
+                "src/bin/phpmd"
+            ],
+            "type": "library",
+            "installation-source": "source",
+            "include-path": [
+                "../../pdepend/pdepend/src/main/php",
+                "src/main/php"
+            ],
+            "description": "Official version of PHPMD handled with Composer."
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -596,6 +651,7 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "phpunit/phpunit": 20,
-        "fabpot/php-cs-fixer": 20
+        "fabpot/php-cs-fixer": 20,
+        "phpmd/phpmd": 20
     }
 }
