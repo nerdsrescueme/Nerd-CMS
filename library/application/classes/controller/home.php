@@ -24,15 +24,15 @@ use Nerd\Design\Architectural\MVC\View;
  * @package    Application
  * @subpackage Controller
  */
-class Home extends Controller {
-
-	/**
-	 * A basic index page
-	 *
-	 * @return   void     No value is returned
-	 */
-	public function actionIndex()
-	{
-		return (new View('template'))->partial('content', 'home/index');
-	}
+class Home extends Controller
+{
+    /**
+     * A basic index page
+     *
+     * @return void No value is returned
+     */
+    public function actionIndex()
+    {
+        return (new View('template'))->partial('content', 'home/index');
+    }
 }

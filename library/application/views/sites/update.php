@@ -7,4 +7,4 @@
 <?= Flash::warning($flash->get('warning')) ?>
 <?= Flash::error($flash->get('error')) ?>
 
-<?= $form ?>
+<?= $form
