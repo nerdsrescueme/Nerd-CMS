@@ -9,7 +9,7 @@ use Nerd\Config
 /**
  * Get and register the Composer autoloader as a secondary loader.
  */
-require join(DS, [\Nerd\LIBRARY_PATH, '..', 'vendor', 'autoload.php']);
+include join(DS, [\Nerd\LIBRARY_PATH, '..', 'vendor', 'autoload.php']);
 
 /**
  * Here you could do some magic for multiple applications by dynamically switching
