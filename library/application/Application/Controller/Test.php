@@ -53,7 +53,6 @@ class Test extends Controller
             $form->field('select', ['options' => $selectOptions], null)->label('Select Something')
         )->legend('Login');
 
-
         $form->container('div',
             (new \Nerd\Form\Label('Some Text'))->class('control-label'),
             (new \Nerd\Form\Html('div',

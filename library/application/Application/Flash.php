@@ -7,7 +7,6 @@ class Flash implements \Nerd\Design\Initializable
     private static $alert;
     private static $flash;
 
-
     public static function __initialize()
     {
         static::$alert = <<<ALERT

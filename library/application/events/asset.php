@@ -2,7 +2,6 @@
 
 namespace Application;
 
-
 return [
 
     'asset.collect' => function() {

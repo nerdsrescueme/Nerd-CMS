@@ -1,4 +1,4 @@
 <?php
 
 // Execute the bootstrapper
-require '../library/nerd/bootstrap.php';
+include '../library/nerd/bootstrap.php';
