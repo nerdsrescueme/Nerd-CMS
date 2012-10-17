@@ -2,7 +2,7 @@
 
 namespace Application\Model;
 
-class Site extends \Nerd\Model implements \Nerd\Design\Initializable
+class Site extends \Nerd\Model
 {
     protected static $table = 'nerd_sites';
 }

@@ -23,6 +23,8 @@ define('Nerd\STORAGE_PATH', join(DS, [\Nerd\LIBRARY_PATH, 'application', 'storag
 /**
  * Setup the current environment
  */
+
+$environment = Environment::instance();
 $env = Environment::$active;
 
 //die(var_dump($env));
@@ -40,6 +42,7 @@ date_default_timezone_set(Config::get('application.timezone', 'UTC'));
 \Nerd\Str::$mbString and mb_internal_encoding(Config::get('application.encoding', 'UTF-8'));
 
 $application = Application::instance();
+
 $application->triggerEvent('application.startup');
 $application->response->send(true);
 $application->triggerEvent('application.shutdown');

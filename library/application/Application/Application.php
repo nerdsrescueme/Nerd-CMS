@@ -12,8 +12,12 @@ use Nerd\Http\Exception as HttpException;
 use Nerd\Design\Structural\FrontController as Controller;
 use Nerd\Url;
 
-class Application extends \Nerd\Application implements Initializable
+class Application
 {
+	// Traits
+	use \Nerd\Design\Creational\Singleton
+	  , \Nerd\Design\Eventable;
+
     public $session;
     public $cache;
     public $css;
@@ -22,7 +26,8 @@ class Application extends \Nerd\Application implements Initializable
 
     public static function __initialize()
     {
-        $app = static::instance();
+		$app = static::instance();
+
         $uri = Url::current()->uri();
 
         $css = ['css/bootstrap.css', 'css/bootstrap-responsive.css'];
@@ -58,5 +63,17 @@ class Application extends \Nerd\Application implements Initializable
 
             return;
         }
+    }
+
+	/**
+     * Redirect user
+     *
+     * @param    string          Url endpoint
+     * @param    integer         Redirect status code
+     * @return void
+     */
+    public function redirect($to = null, $status = 302)
+    {
+        $this->response->redirect($to, $status);
     }
 }
