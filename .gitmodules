@@ -7,3 +7,6 @@
 [submodule "library/ecommerce"]
 	path = library/ecommerce
 	url = https://github.com/nerdsrescueme/Ecommerce.git
+[submodule "library/auth"]
+	path = library/auth
+	url = https://github.com/nerdsrescueme/Auth.git

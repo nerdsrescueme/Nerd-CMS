@@ -12,12 +12,15 @@ use Nerd\Http\Exception as HttpException;
 use Nerd\Design\Structural\FrontController as Controller;
 use Nerd\Url;
 
-class Application
-{
-	// Traits
-	use \Nerd\Design\Creational\Singleton
-	  , \Nerd\Design\Eventable;
+use Auth\Auth;
 
+class Application implements \Nerd\Design\Initializable
+{
+    // Traits
+    use \Nerd\Design\Creational\Singleton
+      , \Nerd\Design\Eventable;
+
+	public $auth;
     public $session;
     public $cache;
     public $css;
@@ -26,18 +29,17 @@ class Application
 
     public static function __initialize()
     {
-		$app = static::instance();
-
+        $app = static::instance();
         $uri = Url::current()->uri();
 
-        $css = ['css/bootstrap.css', 'css/bootstrap-responsive.css'];
-        $js  = ['js/jquery.js', 'js/bootstrap.js'];
-
+		$app->auth     = new Auth();
         $app->response = Response::instance();
         $app->session  = Session::instance();
         $app->cache    = Datastore::instance();
-        $app->css      = Asset::collection($css);
-        $app->js       = Asset::collection($js);
+        $app->css      = Asset::collection(['css/bootstrap.css', 'css/bootstrap-responsive.css']);
+        $app->js       = Asset::collection(['js/jquery.js', 'js/bootstrap.js']);
+
+die(var_dump($app->auth));
 
         // If there is no url, then we're on the home page.
         trim($uri, '/') == '' and $uri = '@@HOME';
@@ -65,7 +67,7 @@ class Application
         }
     }
 
-	/**
+    /**
      * Redirect user
      *
      * @param    string          Url endpoint
