@@ -2,5 +2,8 @@
 
 return function()
 {
-	return 'application';
+	return [
+		'namespace' => 'application',
+		'storage' => 'application',
+	];
 };
