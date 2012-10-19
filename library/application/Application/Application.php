@@ -39,7 +39,9 @@ class Application implements \Nerd\Design\Initializable
         $app->css      = Asset::collection(['css/bootstrap.css', 'css/bootstrap-responsive.css']);
         $app->js       = Asset::collection(['js/jquery.js', 'js/bootstrap.js']);
 
-die(var_dump($app->auth));
+		$user = Model\User::findOneById(1);
+
+		die(var_dump($user));
 
         // If there is no url, then we're on the home page.
         trim($uri, '/') == '' and $uri = '@@HOME';

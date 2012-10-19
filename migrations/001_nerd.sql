@@ -369,7 +369,7 @@ CREATE TABLE IF NOT EXISTS `nerd_users` (
   UNIQUE KEY `username` (`username`),
   UNIQUE KEY `email` (`email`),
   KEY `locaters` (`username`,`email`,`password`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='All users for this Nerd installation' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;
 
 --
 -- RELATIONS FOR TABLE `nerd_users`:
@@ -390,7 +390,7 @@ CREATE TABLE IF NOT EXISTS `nerd_user_metadata` (
   `last_name` char(36) COLLATE utf8_bin DEFAULT NULL COMMENT 'min(3)',
   `zip` int(5) unsigned zerofill DEFAULT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Metadata associated with a Nerd user, most information is optional' COLLATE=utf8_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Constraints for dumped tables
