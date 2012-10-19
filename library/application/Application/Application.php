@@ -20,7 +20,8 @@ class Application implements \Nerd\Design\Initializable
     use \Nerd\Design\Creational\Singleton
       , \Nerd\Design\Eventable;
 
-	public $auth;
+    public $me;
+    public $auth;
     public $session;
     public $cache;
     public $css;
@@ -32,16 +33,18 @@ class Application implements \Nerd\Design\Initializable
         $app = static::instance();
         $uri = Url::current()->uri();
 
-		$app->auth     = new Auth();
+        $user = Model\User::findOneById(1);
+
+        $app->auth     = new Auth($user);
+        $app->me       = $app->auth->user;
+
         $app->response = Response::instance();
         $app->session  = Session::instance();
         $app->cache    = Datastore::instance();
         $app->css      = Asset::collection(['css/bootstrap.css', 'css/bootstrap-responsive.css']);
         $app->js       = Asset::collection(['js/jquery.js', 'js/bootstrap.js']);
 
-		$user = Model\User::findOneById(1);
-
-		die(var_dump($user));
+var_dump($app);
 
         // If there is no url, then we're on the home page.
         trim($uri, '/') == '' and $uri = '@@HOME';
