@@ -44,21 +44,19 @@ class Application implements \Nerd\Design\Initializable
         $app->css      = Asset::collection(['css/bootstrap.css', 'css/bootstrap-responsive.css']);
         $app->js       = Asset::collection(['js/jquery.js', 'js/bootstrap.js']);
 
-var_dump($app);
-
         // If there is no url, then we're on the home page.
         trim($uri, '/') == '' and $uri = '@@HOME';
 
         if ($page = Model\Page::findOneByUri($uri)) {
             $app->response->setBody($page->title);
 
-            return;
+            return $app->response;
         }
 
         try {
             Controller::instance()->dispatch($uri, $app->response);
 
-            return;
+            return $app->response;
         } catch (HttpException $e) {
             if (!$page = Model\Page::findOneByUri($uri = '@@404')) {
                 // Fallback to system handling.
@@ -68,7 +66,7 @@ var_dump($app);
             $app->response->setStatus(404);
             $app->response->setBody($page->title);
 
-            return;
+            return $app->response;
         }
     }
 

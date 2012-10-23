@@ -4,6 +4,10 @@ namespace Application\Model;
 
 class Page extends \Nerd\Model
 {
+	const DELIMITER = '@@';
+	const PAGE_HOME = 'HOME';
+	const PAGE_404  = '404';
+
     protected static $table = 'nerd_pages';
 
     public static function search($search, $order = '`title` ASC')
