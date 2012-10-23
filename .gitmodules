@@ -10,3 +10,6 @@
 [submodule "library/auth"]
 	path = library/auth
 	url = https://github.com/nerdsrescueme/Auth.git
+[submodule "library/theme"]
+	path = library/theme
+	url = https://github.com/nerdsrescueme/Theme.git
