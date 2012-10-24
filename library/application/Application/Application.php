@@ -24,6 +24,7 @@ class Application implements \Nerd\Design\Initializable
     public $auth;
     public $session;
     public $cache;
+    public $theme;
     public $css;
     public $js;
     public $response;
@@ -41,7 +42,8 @@ class Application implements \Nerd\Design\Initializable
         $app->response = Response::instance();
         $app->session  = Session::instance();
         $app->cache    = Datastore::instance();
-        $app->css      = Asset::collection(['css/bootstrap.css', 'css/bootstrap-responsive.css']);
+        $app->theme    = \Theme\Theme::instance('default');
+        $app->css      = Asset::collection(['css/bootstrap.css']);
         $app->js       = Asset::collection(['js/jquery.js', 'js/bootstrap.js']);
 
         // If there is no url, then we're on the home page.

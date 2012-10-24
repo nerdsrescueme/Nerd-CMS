@@ -27,7 +27,7 @@ class Application implements \Nerd\Design\Initializable
 
         Controller::instance()->dispatch($uri, $app->response);
 
-		return $app->response;
+        return $app->response;
     }
 
     /**

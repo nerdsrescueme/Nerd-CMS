@@ -1,5 +1,5 @@
 {
-    "hash": "f17fc9237f34f71073ae3a4c58fbcc3a",
+    "hash": "fe06af8d6969e59019780a1b82ebc6a0",
     "packages": [
 
     ],
@@ -47,29 +47,120 @@
             "description": "A script to automatically fix Symfony Coding Standard"
         },
         {
-            "name": "pdepend/pdepend",
-            "version": "1.1.0",
+            "name": "nikic/php-parser",
+            "version": "v0.9.2",
             "source": {
                 "type": "git",
-                "url": "git://github.com/pdepend/pdepend.git",
-                "reference": "1.1.0"
+                "url": "https://github.com/nikic/PHP-Parser",
+                "reference": "v0.9.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/pdepend/pdepend/zipball/1.1.0",
-                "reference": "1.1.0",
+                "url": "https://github.com/nikic/PHP-Parser/zipball/v0.9.2",
+                "reference": "v0.9.2",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2"
+            },
+            "time": "2012-07-07 13:23:25",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-0": {
+                    "PHPParser": "lib/"
+                }
+            },
+            "license": [
+                "BSD"
+            ],
+            "authors": [
+                {
+                    "name": "Nikita Popov"
+                }
+            ],
+            "description": "A PHP parser written in PHP",
+            "keywords": [
+                "php",
+                "parser"
+            ]
+        },
+        {
+            "name": "pdepend/pdepend",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "git://github.com/pdepend/pdepend.git",
+                "reference": "dc320c4e99f08c500465af655a7a8326184ef2d1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/pdepend/pdepend/zipball/dc320c4e99f08c500465af655a7a8326184ef2d1",
+                "reference": "dc320c4e99f08c500465af655a7a8326184ef2d1",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.2.3"
             },
-            "time": "2012-09-12 04:09:19",
+            "time": "1350029991",
             "bin": [
                 "src/bin/pdepend"
             ],
             "type": "library",
-            "installation-source": "dist",
+            "installation-source": "source",
             "description": "Official version of pdepend to be handled with Composer"
+        },
+        {
+            "name": "phing/phing",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phingofficial/phing",
+                "reference": "c8316f8b9f05f4d469c758ee3edcb6292e27641a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/phingofficial/phing/zipball/c8316f8b9f05f4d469c758ee3edcb6292e27641a",
+                "reference": "c8316f8b9f05f4d469c758ee3edcb6292e27641a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.0"
+            },
+            "time": "1350897327",
+            "bin": [
+                "bin/phing"
+            ],
+            "type": "library",
+            "installation-source": "source",
+            "autoload": {
+                "classmap": [
+                    "classes/phing/"
+                ]
+            },
+            "include-path": [
+                "classes"
+            ],
+            "license": [
+                "LGPL3"
+            ],
+            "authors": [
+                {
+                    "name": "Michiel Rook",
+                    "email": "mrook@php.net"
+                },
+                {
+                    "name": "Phing Community",
+                    "homepage": "http://www.phing.info/trac/wiki/Development/Contributors"
+                }
+            ],
+            "description": "PHing Is Not GNU make; it's a PHP project build system or build tool based on Apache Ant.",
+            "homepage": "http://www.phing.info/",
+            "keywords": [
+                "build",
+                "task",
+                "tool"
+            ]
         },
         {
             "name": "phpmd/phpmd",
@@ -103,16 +194,16 @@
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "1.2.3",
+            "version": "1.2.6",
             "source": {
                 "type": "git",
                 "url": "git://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "1.2.3"
+                "reference": "1.2.6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/sebastianbergmann/php-code-coverage/zipball/1.2.3",
-                "reference": "1.2.3",
+                "url": "https://github.com/sebastianbergmann/php-code-coverage/zipball/1.2.6",
+                "reference": "1.2.6",
                 "shasum": ""
             },
             "require": {
@@ -123,11 +214,9 @@
             },
             "suggest": {
                 "ext-dom": "*",
-                "ext-reflection": "*",
-                "ext-spl": "*",
                 "ext-xdebug": ">=2.0.5"
             },
-            "time": "2012-10-05 00:00:00",
+            "time": "2012-10-16 22:34:13",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -149,7 +238,7 @@
                 }
             ],
             "description": "Library that provides collection, processing, and rendering functionality for PHP code coverage information.",
-            "homepage": "http://www.phpunit.de/",
+            "homepage": "https://github.com/sebastianbergmann/php-code-coverage",
             "keywords": [
                 "testing",
                 "coverage",
@@ -340,12 +429,12 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/sebastianbergmann/phpunit.git",
-                "reference": "9cadfea11e06f2c980e5095d76ac47de988d19e0"
+                "reference": "c1dbcebfac88acbff53d04f70462cc3f85aeb24a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/sebastianbergmann/phpunit/zipball/9cadfea11e06f2c980e5095d76ac47de988d19e0",
-                "reference": "9cadfea11e06f2c980e5095d76ac47de988d19e0",
+                "url": "https://github.com/sebastianbergmann/phpunit/zipball/c1dbcebfac88acbff53d04f70462cc3f85aeb24a",
+                "reference": "c1dbcebfac88acbff53d04f70462cc3f85aeb24a",
                 "shasum": ""
             },
             "require": {
@@ -367,7 +456,7 @@
                 "ext-tokenizer": "*",
                 "phpunit/php-invoker": ">=1.1.0"
             },
-            "time": "1350290544",
+            "time": "1350879414",
             "bin": [
                 "composer/bin/phpunit"
             ],
@@ -454,6 +543,103 @@
             "keywords": [
                 "mock",
                 "xunit"
+            ]
+        },
+        {
+            "name": "pimple/pimple",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "git://github.com/fabpot/Pimple.git",
+                "reference": "v1.0.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/fabpot/Pimple/zipball/v1.0.0",
+                "reference": "v1.0.0",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "time": "2012-05-08 06:57:24",
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "installation-source": "dist",
+            "autoload": {
+                "psr-0": {
+                    "Pimple": "lib/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "Pimple is a simple Dependency Injection Container for PHP 5.3",
+            "homepage": "http://pimple.sensiolabs.org",
+            "keywords": [
+                "dependency injection",
+                "container"
+            ]
+        },
+        {
+            "name": "sami/sami",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fabpot/Sami",
+                "reference": "35e7ae109e17277baa0ef066f9448078b5aca5e0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/fabpot/Sami/zipball/35e7ae109e17277baa0ef066f9448078b5aca5e0",
+                "reference": "35e7ae109e17277baa0ef066f9448078b5aca5e0",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "pimple/pimple": "1.0.*",
+                "twig/twig": "1.*",
+                "nikic/php-parser": "0.9.*",
+                "symfony/console": ">=2.1,<3.0-dev",
+                "symfony/finder": ">=2.1,<3.0-dev",
+                "symfony/filesystem": ">=2.1,<3.0-dev",
+                "symfony/yaml": ">=2.1,<3.0-dev",
+                "symfony/process": ">=2.1,<3.0-dev"
+            },
+            "time": "1349357674",
+            "bin": [
+                "sami.php"
+            ],
+            "type": "application",
+            "installation-source": "source",
+            "autoload": {
+                "psr-0": {
+                    "Sami": "."
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "Sami, an API documentation generator",
+            "homepage": "http://sami.sensiolabs.org",
+            "keywords": [
+                "phpdoc"
             ]
         },
         {
@@ -598,6 +784,53 @@
             "homepage": "http://symfony.com"
         },
         {
+            "name": "symfony/process",
+            "version": "v2.1.2",
+            "target-dir": "Symfony/Component/Process",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/Process",
+                "reference": "v2.1.2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/symfony/Process/zipball/v2.1.2",
+                "reference": "v2.1.2",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "time": "2012-09-18 15:37:29",
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.1-dev"
+                }
+            },
+            "installation-source": "dist",
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\Process": ""
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Process Component",
+            "homepage": "http://symfony.com"
+        },
+        {
             "name": "symfony/yaml",
             "version": "v2.1.2",
             "target-dir": "Symfony/Component/Yaml",
@@ -643,6 +876,55 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "http://symfony.com"
+        },
+        {
+            "name": "twig/twig",
+            "version": "v1.10.3",
+            "source": {
+                "type": "git",
+                "url": "git://github.com/fabpot/Twig.git",
+                "reference": "v1.10.3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/fabpot/Twig/zipball/v1.10.3",
+                "reference": "v1.10.3",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.4"
+            },
+            "time": "2012-10-19 03:45:49",
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.10-dev"
+                }
+            },
+            "installation-source": "dist",
+            "autoload": {
+                "psr-0": {
+                    "Twig_": "lib/"
+                }
+            },
+            "license": [
+                "BSD-3"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Armin Ronacher",
+                    "email": "armin.ronacher@active-4.com"
+                }
+            ],
+            "description": "Twig, the flexible, fast, and secure template language for PHP",
+            "homepage": "http://twig.sensiolabs.org",
+            "keywords": [
+                "templating"
+            ]
         }
     ],
     "aliases": [
@@ -650,6 +932,9 @@
     ],
     "minimum-stability": "stable",
     "stability-flags": {
+        "sami/sami": 20,
+        "pdepend/pdepend": 20,
+        "phing/phing": 20,
         "phpunit/phpunit": 20,
         "fabpot/php-cs-fixer": 20,
         "phpmd/phpmd": 20

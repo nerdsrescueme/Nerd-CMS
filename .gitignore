@@ -5,6 +5,8 @@ composer.phar
 vendor/*
 !vendor/.gitignore
 
+sami.php
+
 #################
 ## Eclipse
 #################
