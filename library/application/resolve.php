@@ -1,9 +1,18 @@
 <?php
 
-return function()
+$folder = strpos($_SERVER['REQUEST_URI'], '/docs') !== false
+	? 'docs' : 'application';
+
+if ($folder == 'docs') {
+	$namespace = 'docs';
+} else {
+	$namespace = 'application';
+}
+
+return function() use ($namespace)
 {
 	return [
-		'namespace' => 'application',
+		'namespace' => $namespace,
 		'storage' => 'application',
 	];
 };
