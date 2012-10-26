@@ -15,7 +15,8 @@
 
 	"require": {
 		"php": ">=5.4.4",
-		"dflydev/markdown": "1.0.x-dev"
+		"dflydev/markdown": "1.0.x-dev",
+		"twig/twig": "1.*"
 	},
 
     "require-dev": {

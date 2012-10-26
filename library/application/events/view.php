@@ -8,6 +8,7 @@ return [
 
     'view.setup' => function() {
         View::set('application', Application::instance());
+		View::set('theme', Application::instance()->theme);
         View::set('flash', Application::instance()->session->flash);
     },
 

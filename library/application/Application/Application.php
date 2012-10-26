@@ -2,17 +2,22 @@
 
 namespace Application;
 
-use Nerd\Design\Initializable;
-use Nerd\Session;
-use Nerd\Asset;
-use Nerd\Datastore;
-use Nerd\Uri;
-use Nerd\Http\Response;
-use Nerd\Http\Exception as HttpException;
-use Nerd\Design\Structural\FrontController as Controller;
-use Nerd\Url;
+use Nerd\Design\Initializable
+  , Nerd\Session
+  , Nerd\Asset
+  , Nerd\Datastore
+  , Nerd\Uri
+  , Nerd\Http\Response
+  , Nerd\Http\Exception as HttpException
+  , Nerd\Design\Structural\FrontController as Controller
+  , Nerd\Url
+  , Nerd\Design\Architectural\MVC\View;
 
+// Auth package
 use Auth\Auth;
+
+// Theme package
+use Theme\Theme;
 
 class Application implements \Nerd\Design\Initializable
 {
@@ -25,6 +30,7 @@ class Application implements \Nerd\Design\Initializable
     public $session;
     public $cache;
     public $theme;
+	public $template;
     public $css;
     public $js;
     public $response;
@@ -42,34 +48,45 @@ class Application implements \Nerd\Design\Initializable
         $app->response = Response::instance();
         $app->session  = Session::instance();
         $app->cache    = Datastore::instance();
-        $app->theme    = \Theme\Theme::instance('default');
-        $app->css      = Asset::collection(['css/bootstrap.css']);
-        $app->js       = Asset::collection(['js/jquery.js', 'js/bootstrap.js']);
+        $app->theme    = Theme::instance('default'); // Need to make dynamic
+		$app->template = $app->theme->template();
+
+        $app->css      = Asset::collection(['bootstrap.css']);
+        $app->js       = Asset::collection(['jquery.js', 'bootstrap.js']);
 
         // If there is no url, then we're on the home page.
         trim($uri, '/') == '' and $uri = '@@HOME';
 
+		// If we can find the page, send it back.
         if ($page = Model\Page::findOneByUri($uri)) {
-            $app->response->setBody($page->title);
+			$app->template
+				->with('main', $app->theme->view($page->layout_id))
+				->with('page', $page);
+
+            $app->response->setBody($app->template);
 
             return $app->response;
         }
 
         try {
             Controller::instance()->dispatch($uri, $app->response);
-
-            return $app->response;
         } catch (HttpException $e) {
-            if (!$page = Model\Page::findOneByUri($uri = '@@404')) {
+            if (!$page = Model\Page::findOneByUri($uri = "@@{$e->getCode()}")) {
                 // Fallback to system handling.
-                throw new HttpException(404, 'Page Not Found');
+                throw new HttpException($e->getCode(), $uri);
             }
 
-            $app->response->setStatus(404);
-            $app->response->setBody($page->title);
+			$view = $app->theme->view($page->layout_id, ['e' => $e]);
 
-            return $app->response;
+			$app->template
+				->with('main', $view)
+				->with('page', $page);
+
+            $app->response->setStatus($e->getCode());
+            $app->response->setBody($app->template);
         }
+
+		return $app->response;
     }
 
     /**
