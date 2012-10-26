@@ -6,7 +6,7 @@ class Theme extends \Geek\Design\Task
 {
     public function run()
     {
-        $this->geek->write('The theme task has been run!!!');
+        $this->geek->write($this->help());
     }
 
 	/**
@@ -84,11 +84,11 @@ class Theme extends \Geek\Design\Task
 	 *
 	 * # Usage
 	 *
-	 *     php geek application.theme.update {THEME_NAME}
+	 *     php geek application.theme.remove {THEME_NAME}
 	 *
 	 * @return void
 	 */
-	public function update()
+	public function remove()
 	{
 		list($task, $theme) = $this->geek->args();
 
@@ -118,7 +118,24 @@ class Theme extends \Geek\Design\Task
     {
         return <<<HELP
 
-The print task
+Usage:
+  geek nerd.theme[.task] [args] [flags]
+
+Tasks:
+  install {REPO} {THEME} -- Install a theme from a github repo
+  remove  {THEME}        -- Uninstall a theme
+  update  {THEME}        -- Update a theme from its source repo
+
+Runtime options:
+  None at this time
+
+Description:
+  The Theme suite of tasks can be used to perform actions
+  pertaining to Themes within NerdCMS. With this suite, you can
+  install, remove or update a theme very easily.
+
+Documentation:
+  http://nerdphp.com/docs/nerd/tasks/theme
 
 HELP;
     }
