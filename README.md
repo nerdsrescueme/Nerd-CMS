@@ -1,10 +1,10 @@
 Nerd CMS: Simple content management
 ===================================
 
-Nerd CMS is a simple content management system built on top of the Nerd library. Its
-easy-to-use, browser based interface makes content creation and editing as easy as
-can be. The UI uses cutting edge Javascript and HTML5 features resulting in a simple,
-intuitive way to manage your web site.
+Nerd CMS is a simple content management system built on top of the Nerd library.
+Its easy-to-use, browser based interface makes content creation and editing as
+easy as can be. The UI uses cutting edge Javascript and HTML5 features resulting
+in a simple, intuitive way to manage your web site.
 
 Nerd CMS was built...
 
