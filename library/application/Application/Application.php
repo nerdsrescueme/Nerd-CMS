@@ -48,9 +48,8 @@ class Application implements \Nerd\Design\Initializable
         $app->response = Response::instance();
         $app->session  = Session::instance();
         $app->cache    = Datastore::instance();
-        $app->theme    = Theme::instance('default'); // Need to make dynamic
+        $app->theme    = Theme::instance(); // Need to make dynamic
 		$app->template = $app->theme->template();
-
         $app->css      = Asset::collection(['bootstrap.css']);
         $app->js       = Asset::collection(['jquery.js', 'bootstrap.js']);
 

@@ -19,7 +19,7 @@ class Theme extends \Geek\Design\Task
 	 *
 	 * # Usage
 	 *
-	 *     php geek application.theme.install https://github.com/user/repo.git {THEME_NAME}
+	 *   > geek application.theme.install https://github.com/user/repo.git {THEME_NAME}
 	 *
 	 * @return void
 	 */
@@ -31,7 +31,7 @@ class Theme extends \Geek\Design\Task
 		$name  = str_replace('.git', '', end($parts));
 
 		$folder  = join(DS, ['public', 'themes', $folder]);
-		$command = "git clone $repo $folder";
+		$command = "git clone $repo $folder.theme";
 		$return  = [];
 
 		$this->geek->write('');
@@ -54,7 +54,7 @@ class Theme extends \Geek\Design\Task
 	 *
 	 * # Usage
 	 *
-	 *     php geek application.theme.uninstall {THEME_NAME}
+	 *   > geek application.theme.uninstall {THEME_NAME}
 	 *
 	 * @return void
 	 */
@@ -63,7 +63,7 @@ class Theme extends \Geek\Design\Task
 		list($task, $theme) = $this->geek->args();
 
 		$folder  = join(DS, [\Nerd\DOCROOT, 'themes', $theme]);
-		$command = "rm -rf $folder";
+		$command = "rm -rf $folder.theme";
 		$return  = [];
 
 		$this->geek->write('');
@@ -84,16 +84,16 @@ class Theme extends \Geek\Design\Task
 	 *
 	 * # Usage
 	 *
-	 *     php geek application.theme.remove {THEME_NAME}
+	 *   > geek application.theme.update {THEME_NAME}
 	 *
 	 * @return void
 	 */
-	public function remove()
+	public function update()
 	{
 		list($task, $theme) = $this->geek->args();
 
 		$folder  = join(DS, [\Nerd\DOCROOT, 'themes', $theme]);
-		$command = "cd $folder & git pull";
+		$command = "cd $folder.theme & git pull";
 		$return  = [];
 
 		$this->geek->write('');

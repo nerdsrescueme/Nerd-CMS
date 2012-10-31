@@ -1,0 +1,13 @@
+{
+	"name": "Default",
+	"description": "Default theme for Nerd CMS, provides a fallback for other themes",
+
+	"assets": {
+		"css": ["default.css"],
+		"js": ["default.js"]
+	},
+
+	"analytics": {
+		"code": false
+	}
+}
