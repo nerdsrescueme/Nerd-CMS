@@ -30,7 +30,7 @@ class Application implements \Nerd\Design\Initializable
     public $session;
     public $cache;
     public $theme;
-	public $template;
+    public $template;
     public $css;
     public $js;
     public $response;
@@ -49,18 +49,18 @@ class Application implements \Nerd\Design\Initializable
         $app->session  = Session::instance();
         $app->cache    = Datastore::instance();
         $app->theme    = Theme::instance(); // Need to make dynamic
-		$app->template = $app->theme->template();
+        $app->template = $app->theme->template();
         $app->css      = Asset::collection(['bootstrap.css']);
         $app->js       = Asset::collection(['jquery.js', 'bootstrap.js']);
 
         // If there is no url, then we're on the home page.
         trim($uri, '/') == '' and $uri = '@@HOME';
 
-		// If we can find the page, send it back.
+        // If we can find the page, send it back.
         if ($page = Model\Page::findOneByUri($uri)) {
-			$app->template
-				->with('main', $app->theme->view($page->layout_id))
-				->with('page', $page);
+            $app->template
+                ->with('main', $app->theme->view($page->layout_id))
+                ->with('page', $page);
 
             $app->response->setBody($app->template);
 
@@ -75,17 +75,17 @@ class Application implements \Nerd\Design\Initializable
                 throw new HttpException($e->getCode(), $uri);
             }
 
-			$view = $app->theme->view($page->layout_id, ['e' => $e]);
+            $view = $app->theme->view($page->layout_id, ['e' => $e]);
 
-			$app->template
-				->with('main', $view)
-				->with('page', $page);
+            $app->template
+                ->with('main', $view)
+                ->with('page', $page);
 
             $app->response->setStatus($e->getCode());
             $app->response->setBody($app->template);
         }
 
-		return $app->response;
+        return $app->response;
     }
 
     /**
