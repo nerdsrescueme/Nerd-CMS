@@ -2,6 +2,7 @@
 
 namespace Application;
 
+// Nerd library
 use Nerd\Design\Initializable
   , Nerd\Session
   , Nerd\Asset
@@ -11,13 +12,13 @@ use Nerd\Design\Initializable
   , Nerd\Http\Exception as HttpException
   , Nerd\Design\Structural\FrontController as Controller
   , Nerd\Url
-  , Nerd\Design\Architectural\MVC\View;
+  , Nerd\Design\Architectural\MVC\View
 
-// Auth package
-use Auth\Auth;
+    // Auth package
+  , Auth\Auth
 
-// Theme package
-use Theme\Theme;
+    // Theme package
+  , Theme\Theme;
 
 class Application implements \Nerd\Design\Initializable
 {
@@ -37,6 +38,8 @@ class Application implements \Nerd\Design\Initializable
 
     public static function __initialize()
     {
+        $arr = ['test', 'me'];
+
         $app = static::instance();
         $uri = Url::current()->uri();
 
