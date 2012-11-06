@@ -13,9 +13,7 @@ return [
     'application.shutdown' => function() use (&$app) {
         $app->session->__destruct();
 
-        if (isset($_GET['timer'])) {
-            echo '<!-- '.round(microtime(true) - $_SERVER['REQUEST_TIME_FLOAT'], 6).' -->';
-        }
+        echo '<!-- Compiled by Nerd '.\Nerd\Version::FULL.' in '.round(microtime(true) - $_SERVER['REQUEST_TIME_FLOAT'], 6).' seconds -->';
     },
 
     'application.error' => function() use (&$app) {

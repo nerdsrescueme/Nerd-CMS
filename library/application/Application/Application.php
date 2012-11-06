@@ -65,9 +65,7 @@ class Application implements \Nerd\Design\Initializable
                 ->with('main', $app->theme->view($page->layout_id))
                 ->with('page', $page);
 
-            $app->response->setBody($app->template);
-
-            return $app->response;
+            return $app->response->setBody($app->template);
         }
 
         try {
@@ -80,15 +78,12 @@ class Application implements \Nerd\Design\Initializable
 
             $view = $app->theme->view($page->layout_id, ['e' => $e]);
 
-            $app->template
-                ->with('main', $view)
-                ->with('page', $page);
+            $app->template->with(['main' => $view, 'page' => $page]);
 
-            $app->response->setStatus($e->getCode());
-            $app->response->setBody($app->template);
+            return $app->response
+                ->setStatus($e->getCode())
+                ->setBody($app->template);
         }
-
-        return $app->response;
     }
 
     /**

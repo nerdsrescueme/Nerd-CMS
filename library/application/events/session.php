@@ -2,7 +2,7 @@
 
 namespace Application;
 
-use \Nerd\Session;
+use Nerd\Session;
 
 return [
 

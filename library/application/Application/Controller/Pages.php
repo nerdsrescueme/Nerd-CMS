@@ -1,20 +1,43 @@
 <?php
 
+/**
+ * Application Controllers
+ *
+ * @package NerdCMS
+ * @subpackage Controllers
+ */
 namespace Application\Controller;
 
 // Aliasing rules
 use Nerd\Design\Architectural\MVC\Controller
   , Nerd\Design\Architectural\MVC\View
   , Application\Model\Page
-  , Nerd\Form\Field\Submit
-  , Nerd\Form\Field\Reset
   , Nerd\Input
   , Nerd\Session
   , Nerd\Url
   , Nerd\Format;
 
-class Pages extends Controller
+/**
+ * Application Pages Controller
+ *
+ * Defines functionality surrounding viewing, adding, updating and otherwise
+ * manipulating pages within Nerd CMS;
+ *
+ * @package NerdCMS
+ * @subpackage Controllers
+ */
+class Pages extends Base
 {
+    // Traits
+    use Traits\Searchable;
+
+    /**
+     * Bind an extra event that binds the last search variable to the template
+     * view instance.
+     *
+     * @todo Move this into common functionality?
+     * @return void
+     */
     public function before()
     {
         parent::before();
@@ -23,23 +46,28 @@ class Pages extends Controller
             $controller->template->set('lastSearch', $controller->lastSearch());
         });
     }
+
+    /**
+     * List all pages
+     *
+     * @todo Pagination results
+     * @return Nerd\Design\Architectural\MVC\View
+     */
     public function actionIndex()
     {
-        // Set return state for pages (last search function)
-        $this->session->delete('page.lastSearch');
+        $this->session->delete('page.lastSearch'); // Remove last search var
 
-        return $this->template->partial('content', 'pages/index', [
+        return $this->template->partial('content', 'pages/list', [
             'pages' => Page::findAll('SELECT * FROM nerd_pages'),
         ]);
     }
 
-    public function actionView($id = null)
-    {
-        return $this->template->partial('content', 'pages/view', [
-            'page' => Page::findOneById($id),
-        ]);
-    }
-
+    /**
+     * List all pages matching search criteria
+     *
+     * @todo Paginate results
+     * @return Nerd\Design\Architectural\MVC\View
+     */
     public function actionSearch()
     {
         $query = Input::get('q');
@@ -52,12 +80,30 @@ class Pages extends Controller
             return $pages->to('json');
         }
 
-        return $this->template->partial('content', 'pages/index', [
+        return $this->template->partial('content', 'pages/list', [
             'pages' => $pages,
             'term'  => $query
         ]);
     }
 
+    /**
+     * View a specific page by id
+     *
+     * @param     integer          Page record id
+     * @return    Nerd\Design\Architectural\MVC\View
+     */
+    public function actionView($id = null)
+    {
+        return $this->template->partial('content', 'pages/view', [
+            'page' => Page::findOneById($id),
+        ]);
+    }
+
+    /**
+     * Create a new page
+     *
+     * @return Nerd\Design\Architectural\MVC\View
+     */
     public function actionCreate()
     {
         $page = new Page();
@@ -117,8 +163,8 @@ class Pages extends Controller
         }
 
         $form->container('div',
-            (new Reset(['class' => 'btn btn-danger'])),
-            (new Submit(['class' => 'btn btn-primary']))
+            (new \Nerd\Form\Field\Reset(['class' => 'btn btn-danger'])),
+            (new \Nerd\Form\Field\Submit(['class' => 'btn btn-primary']))
         )->class('form-actions');
 
         return $this->template->partial('content', 'pages/new', [
@@ -127,6 +173,12 @@ class Pages extends Controller
         ]);
     }
 
+    /**
+     * Update an existing page by id
+     *
+     * @param     integer          Page record id
+     * @return    Nerd\Design\Architectural\MVC\View
+     */
     public function actionUpdate($id = null)
     {
         $page = Page::findOneById($id);
@@ -178,8 +230,8 @@ class Pages extends Controller
         }
 
         $form->container('div',
-            (new Reset(['class' => 'btn btn-danger'])),
-            (new Submit(['class' => 'btn btn-primary']))
+            (new \Nerd\Form\Field\Reset(['class' => 'btn btn-danger'])),
+            (new \Nerd\Form\Field\Submit(['class' => 'btn btn-primary']))
         )->class('form-actions');
 
         return $this->template->partial('content', 'pages/update', [
@@ -188,6 +240,12 @@ class Pages extends Controller
         ]);
     }
 
+    /**
+     * Delete an existing page by id
+     *
+     * @param     integer          Page record id
+     * @return    Nerd\Design\Architectural\MVC\View
+     */
     public function actionDelete($id = null)
     {
         try {
@@ -208,25 +266,15 @@ class Pages extends Controller
         $this->application->redirect(Url::site('/pages'));
     }
 
-    public function lastSearch()
+    /**
+     * Get the page to be redirected to after a search
+     *
+     * @return    string          Redirect URI
+     */
+    protected function lastSearch()
     {
         $search = $this->session->get('page.lastSearch', false);
 
-        if ($search === false) {
-            return '/pages';
-        }
-
-        return "/pages/search?q=$search";
-    }
-
-    private function form()
-    {
-        \Nerd\Form\Label::defaultAttribute('class', 'control-label');
-
-        return (new \Nerd\Form())
-              ->class('form-horizontal')
-              ->method('post')
-              ->wrap('<div class="control-group">', '</div>')
-              ->wrapFields('<div class="controls">', '</div>');;
+        return $search ? '/pages' : "/pages/search?q=$search";
     }
 }

@@ -2,18 +2,15 @@
 
 namespace Application;
 
-use \Nerd\Design\Architectural\MVC\Controller;
-use \Nerd\Design\Architectural\MVC\View;
-use \Nerd\Input;
+use Nerd\Design\Architectural\MVC\Controller
+  , Nerd\Design\Architectural\MVC\View
+  , Nerd\Input
+  , Nerd\Session;
 
 return [
 
     'controller.setup' => function(Controller $controller) {
-        $session = Application::instance()->session;
-
-        if (!Input::protect($session->get('application.csrf'))) {
-            throw new \Nerd\Http\Exception(403);
-        }
+        $session = Session::instance();
 
         $controller->application = Application::instance();
         $controller->session     = $session;

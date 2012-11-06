@@ -8,7 +8,11 @@
     </div>
 </form>
 
+<?php if (isset($term)) : ?>
+<h2>Listing Results for <small><?= $term ?></small></h2>
+<?php else : ?>  
 <h2>Listing Pages</h2>
+<?php endif ?>
 
 <?= Flash::info($flash->get('info')) ?>
 <?= Flash::success($flash->get('success')) ?>
@@ -16,7 +20,7 @@
 <?= Flash::error($flash->get('error')) ?>
 
 <?php if (count($pages)) : ?>
-<table class="table table-striped table-hover">
+<table class="table table-sortable table-striped table-hover">
     <thead>
         <th>Title</th>
         <th>Uri</th>
@@ -24,7 +28,7 @@
     </thead>
     <tbody>
     <?php foreach($pages as $page) : ?>
-        <tr>
+        <tr<?= substr($page->uri, 0, 1) == '@' ? ' class="info"' : '' ?>>
             <td><?= $page->title ?></td>
             <td><?= $page->uri ?></td>
             <td>
