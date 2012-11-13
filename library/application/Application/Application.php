@@ -68,6 +68,9 @@ class Application implements \Nerd\Design\Initializable
             return $app->response->setBody($app->template);
         }
 
+        // If we can't get the page from the db, fall back to normal MVC
+        // requests. All CMS specific administration pages are accessible
+        // through this method, otherwise we throw a 404 error.
         try {
             Controller::instance()->dispatch($uri, $app->response);
         } catch (HttpException $e) {
