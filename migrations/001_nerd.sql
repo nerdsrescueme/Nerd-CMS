@@ -100,19 +100,19 @@ CREATE TABLE IF NOT EXISTS `nerd_keywords` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `nerd_pages`
+-- Table structure for table `nerd_pages`, `nerd_page_history`
 --
 
 DROP TABLE IF EXISTS `nerd_pages`;
 CREATE TABLE IF NOT EXISTS `nerd_pages` (
   `id` int(8) unsigned NOT NULL AUTO_INCREMENT,
   `site_id` int(2) unsigned NOT NULL,
-  `layout_id` char(32) COLLATE utf8_bin NOT NULL DEFAULT 'default' COMMENT 'min(3)',
-  `title` char(160) COLLATE utf8_bin NOT NULL COMMENT 'min(3)',
-  `subtitle` char(160) COLLATE utf8_bin DEFAULT NULL,
-  `uri` char(200) COLLATE utf8_bin NOT NULL COMMENT 'uri',
-  `description` char(200) COLLATE utf8_bin DEFAULT NULL,
-  `status` enum('one','two') COLLATE utf8_bin DEFAULT 'one',
+  `layout_id` char(32) NOT NULL DEFAULT 'default' COMMENT 'min(3)',
+  `title` char(160) NOT NULL COMMENT 'min(3)',
+  `subtitle` char(160) DEFAULT NULL,
+  `uri` char(200) NOT NULL COMMENT 'uri',
+  `description` char(200) DEFAULT NULL,
+  `status` enum('one','two') DEFAULT 'one',
   `priority` int(2) unsigned zerofill NOT NULL DEFAULT '05' COMMENT 'max(10), min(1)',
   `change_frequency` enum('always','hourly','daily','weekly','monthly','yearly','never') COLLATE utf8_bin DEFAULT 'weekly',
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -120,7 +120,21 @@ CREATE TABLE IF NOT EXISTS `nerd_pages` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `uri` (`uri`),
   KEY `site_id` (`site_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Nerd pages' AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=4 ;
+
+
+DROP TABLE IF EXISTS `nerd_page_history`;
+CREATE TABLE IF NOT EXISTS `nerd_page_history` (
+  `page_id` int(8) unsigned NOT NULL,
+  `site_id` int(2) unsigned NOT NULL,
+  `title` char(160) NOT NULL,
+  `subtitle` char(160) DEFAULT NULL,
+  `uri` char(200) NOT NULL,
+  `description` char(200) DEFAULT NULL,
+  `status` char(32) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`page_id`,`created_at`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;
 
 --
 -- Dumping data for table `nerd_pages`
