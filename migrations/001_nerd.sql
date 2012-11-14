@@ -1,11 +1,6 @@
--- phpMyAdmin SQL Dump
--- version 3.5.2
--- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Aug 24, 2012 at 03:38 PM
--- Server version: 5.5.25a
--- PHP Version: 5.4.4
+-- Initial Nerd-CMS database structure dump
+--
 
 SET FOREIGN_KEY_CHECKS=0;
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
@@ -13,94 +8,78 @@ SET AUTOCOMMIT=0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
-
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
 
---
--- Database: `new_nerd`
---
-
--- --------------------------------------------------------
 
 --
--- Table structure for table `nerd_sessions`
+-- Nerd Sessions
 --
 
 DROP TABLE IF EXISTS `nerd_sessions`;
 CREATE TABLE IF NOT EXISTS `nerd_sessions` (
-  `id` char(50) COLLATE utf8_bin NOT NULL,
+  `id` char(50) NOT NULL,
   `user_id` int(5) unsigned DEFAULT NULL,
-  `data` text(4000) COLLATE utf8_bin NOT NULL,
+  `data` text(4000) NOT NULL,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`),
   KEY `updated_at` (`updated_at`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Nerd database sessions table' COLLATE=utf8_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 
 --
--- Table structure for table `nerd_cities`
+-- Nerd Cities
 --
 
 DROP TABLE IF EXISTS `nerd_cities`;
 CREATE TABLE IF NOT EXISTS `nerd_cities` (
-  `city` char(50) COLLATE utf8_bin NOT NULL,
-  `state` char(2) COLLATE utf8_bin NOT NULL,
+  `city` char(50) NOT NULL,
+  `state` char(2) NOT NULL,
   `zip` int(5) unsigned zerofill NOT NULL,
   `latitude` double NOT NULL,
   `longitude` double NOT NULL,
-  `county` char(50) COLLATE utf8_bin NOT NULL,
+  `county` char(50) NOT NULL,
   PRIMARY KEY (`zip`),
   KEY `county` (`county`),
   KEY `state` (`state`),
   KEY `city` (`city`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='All cities in the USA' COLLATE=utf8_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
-
--- --------------------------------------------------------
 
 --
--- Table structure for table `nerd_components`
+-- Nerd Components
 --
 
 DROP TABLE IF EXISTS `nerd_components`;
 CREATE TABLE IF NOT EXISTS `nerd_components` (
   `id` int(8) unsigned NOT NULL AUTO_INCREMENT,
   `page_id` int(8) unsigned NOT NULL,
-  `key` char(32) COLLATE utf8_bin NOT NULL,
-  `data` text COLLATE utf8_bin NOT NULL,
+  `key` char(32) NOT NULL,
+  `data` text NOT NULL,
   PRIMARY KEY (`id`),
   KEY `page_id` (`page_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Nerd page components' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;
+
 
 --
--- RELATIONS FOR TABLE `nerd_components`:
---   `page_id`
---       `nerd_pages` -> `id`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `nerd_keywords`
+-- Nerd Keywords
 --
 
 DROP TABLE IF EXISTS `nerd_keywords`;
 CREATE TABLE IF NOT EXISTS `nerd_keywords` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `keyword` char(32) COLLATE utf8_bin NOT NULL COMMENT 'min(3)',
+  `keyword` char(32) NOT NULL COMMENT 'min(3)',
   PRIMARY KEY (`id`),
   UNIQUE KEY `keyword` (`keyword`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Keywords for use in search and SEO' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;
 
--- --------------------------------------------------------
 
 --
--- Table structure for table `nerd_pages`, `nerd_page_history`
+-- Nerd Pages
 --
 
 DROP TABLE IF EXISTS `nerd_pages`;
@@ -123,6 +102,10 @@ CREATE TABLE IF NOT EXISTS `nerd_pages` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=4 ;
 
 
+--
+-- Nerd Page History
+--
+
 DROP TABLE IF EXISTS `nerd_page_history`;
 CREATE TABLE IF NOT EXISTS `nerd_page_history` (
   `page_id` int(8) unsigned NOT NULL,
@@ -137,7 +120,7 @@ CREATE TABLE IF NOT EXISTS `nerd_page_history` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `nerd_pages`
+-- Nerd Pages - Data
 --
 
 INSERT INTO `nerd_pages` (`id`, `site_id`, `layout_id`, `title`, `subtitle`, `uri`, `description`, `status`, `priority`, `change_frequency`, `updated_at`, `created_at`) VALUES
@@ -145,10 +128,9 @@ INSERT INTO `nerd_pages` (`id`, `site_id`, `layout_id`, `title`, `subtitle`, `ur
 (2, 1, 'default', '404', 'Page Not Found', '@@404', '', 'one', 1, 'monthly', '2012-01-01 00:00:01', '2012-01-01 00:00:01'),
 (3, 1, 'default', '500', 'Internal Server Error', '@@500', '', 'one', 1, 'monthly', '2012-01-01 00:00:01', '2012-01-01 00:00:01');
 
--- --------------------------------------------------------
 
 --
--- Table structure for table `nerd_page_keywords`
+-- Nerd Page Keywords
 --
 
 DROP TABLE IF EXISTS `nerd_page_keywords`;
@@ -157,20 +139,11 @@ CREATE TABLE IF NOT EXISTS `nerd_page_keywords` (
   `keyword_id` int(11) unsigned NOT NULL,
   PRIMARY KEY (`page_id`,`keyword_id`),
   KEY `keyword_id` (`keyword_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Link table for page keywords';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
 
 --
--- RELATIONS FOR TABLE `nerd_page_keywords`:
---   `keyword_id`
---       `nerd_keywords` -> `id`
---   `page_id`
---       `nerd_pages` -> `id`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `nerd_regions`
+-- Nerd Regions
 --
 
 DROP TABLE IF EXISTS `nerd_regions`;
@@ -181,18 +154,11 @@ CREATE TABLE IF NOT EXISTS `nerd_regions` (
   `data` text COLLATE utf8_bin NOT NULL,
   PRIMARY KEY (`id`),
   KEY `page_id` (`page_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='HTML regions within a page' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;
+
 
 --
--- RELATIONS FOR TABLE `nerd_regions`:
---   `page_id`
---       `nerd_pages` -> `id`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `nerd_sites`
+-- Nerd Sites
 --
 
 DROP TABLE IF EXISTS `nerd_sites`;
@@ -206,17 +172,17 @@ CREATE TABLE IF NOT EXISTS `nerd_sites` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=2 ;
 
+
 --
--- Dumping data for table `nerd_sites`
+-- Nerd Sites - Data
 --
 
 INSERT INTO `nerd_sites` (`id`, `host`, `theme`, `active`, `maintaining`, `description`) VALUES
 (1, 'localhost', 'default', 1, 0, 'Default site upon installation. This defaults to a locally hosted site.');
 
--- --------------------------------------------------------
 
 --
--- Table structure for table `nerd_site_keywords`
+-- Nerd Site Keywords
 --
 
 DROP TABLE IF EXISTS `nerd_site_keywords`;
@@ -225,20 +191,11 @@ CREATE TABLE IF NOT EXISTS `nerd_site_keywords` (
   `keyword_id` int(11) unsigned NOT NULL,
   PRIMARY KEY (`site_id`,`keyword_id`),
   KEY `keyword_id` (`keyword_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Link table for site keywords';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
 
 --
--- RELATIONS FOR TABLE `nerd_site_keywords`:
---   `keyword_id`
---       `nerd_keywords` -> `id`
---   `site_id`
---       `nerd_sites` -> `id`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `nerd_site_users`
+-- Nerd Site Users
 --
 
 DROP TABLE IF EXISTS `nerd_site_users`;
@@ -247,60 +204,39 @@ CREATE TABLE IF NOT EXISTS `nerd_site_users` (
   `user_id` int(5) unsigned NOT NULL,
   PRIMARY KEY (`site_id`,`user_id`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8  COMMENT='Link table for site users' COLLATE=utf8_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
 
 --
--- RELATIONS FOR TABLE `nerd_site_users`:
---   `site_id`
---       `nerd_sites` -> `id`
---   `user_id`
---       `nerd_users` -> `id`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `nerd_snippets`
+-- Nerd Snippets
 --
 
 DROP TABLE IF EXISTS `nerd_snippets`;
 CREATE TABLE IF NOT EXISTS `nerd_snippets` (
   `id` int(8) unsigned NOT NULL AUTO_INCREMENT,
   `page_id` int(8) unsigned NOT NULL,
-  `key` char(32) COLLATE utf8_bin NOT NULL COMMENT 'min(3)',
-  `data` text COLLATE utf8_bin NOT NULL,
+  `key` char(32) NOT NULL COMMENT 'min(3)',
+  `data` text NOT NULL,
   PRIMARY KEY (`id`),
   KEY `page_id` (`page_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Nerd snippets' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;
+
 
 --
--- RELATIONS FOR TABLE `nerd_snippets`:
---   `page_id`
---       `nerd_pages` -> `id`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `nerd_states`
+-- Nerd States
 --
 
 DROP TABLE IF EXISTS `nerd_states`;
 CREATE TABLE IF NOT EXISTS `nerd_states` (
-  `code` char(2) COLLATE utf8_bin NOT NULL COMMENT 'Min(2)',
-  `name` char(32) COLLATE utf8_bin NOT NULL COMMENT 'Min(4)',
+  `code` char(2) NOT NULL COMMENT 'Min(2)',
+  `name` char(32) NOT NULL COMMENT 'Min(4)',
   PRIMARY KEY (`code`),
   UNIQUE KEY `name` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='All of the United States' COLLATE=utf8_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
 
 --
--- RELATIONS FOR TABLE `nerd_states`:
---   `code`
---       `nerd_cities` -> `state`
---
-
---
--- Dumping data for table `nerd_states`
+-- Nerd States - Data
 --
 
 INSERT INTO `nerd_states` (`code`, `name`) VALUES
@@ -356,25 +292,24 @@ INSERT INTO `nerd_states` (`code`, `name`) VALUES
 ('WI', 'Wisconsin'),
 ('WY', 'Wyoming');
 
--- --------------------------------------------------------
 
 --
--- Table structure for table `nerd_users`
+-- Nerd Users
 --
 
 DROP TABLE IF EXISTS `nerd_users`;
 CREATE TABLE IF NOT EXISTS `nerd_users` (
   `id` int(5) unsigned NOT NULL AUTO_INCREMENT,
   `super` tinyint(1) NOT NULL DEFAULT '0',
-  `username` char(32) COLLATE utf8_bin NOT NULL COMMENT 'username',
-  `email` char(255) COLLATE utf8_bin NOT NULL COMMENT 'email',
-  `password` char(81) COLLATE utf8_bin NOT NULL COMMENT 'password',
-  `password_reset_hash` char(81) COLLATE utf8_bin DEFAULT NULL,
-  `temp_password` char(81) COLLATE utf8_bin DEFAULT NULL,
-  `remember` char(81) COLLATE utf8_bin DEFAULT NULL,
-  `activation_hash` char(81) COLLATE utf8_bin DEFAULT NULL,
-  `ip` char(45) COLLATE utf8_bin NOT NULL COMMENT 'ip',
-  `status` enum('inactive','active','banned') COLLATE utf8_bin NOT NULL DEFAULT 'inactive',
+  `username` char(32) NOT NULL COMMENT 'username',
+  `email` char(255) NOT NULL COMMENT 'email',
+  `password` char(81) NOT NULL COMMENT 'password',
+  `password_reset_hash` char(81) DEFAULT NULL,
+  `temp_password` char(81) DEFAULT NULL,
+  `remember` char(81) DEFAULT NULL,
+  `activation_hash` char(81) DEFAULT NULL,
+  `ip` char(45) NOT NULL COMMENT 'ip',
+  `status` enum('inactive','active','banned') NOT NULL DEFAULT 'inactive',
   `activated` tinyint(1) NOT NULL DEFAULT '0',
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
@@ -385,30 +320,22 @@ CREATE TABLE IF NOT EXISTS `nerd_users` (
   KEY `locaters` (`username`,`email`,`password`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;
 
---
--- RELATIONS FOR TABLE `nerd_users`:
---   `id`
---       `nerd_user_metadata` -> `user_id`
---
-
--- --------------------------------------------------------
 
 --
--- Table structure for table `nerd_user_metadata`
+-- Nerd Users Metadata
 --
 
 DROP TABLE IF EXISTS `nerd_user_metadata`;
 CREATE TABLE IF NOT EXISTS `nerd_user_metadata` (
   `user_id` int(5) unsigned NOT NULL,
-  `first_name` char(36) COLLATE utf8_bin DEFAULT NULL COMMENT 'min(3)',
-  `last_name` char(36) COLLATE utf8_bin DEFAULT NULL COMMENT 'min(3)',
+  `first_name` char(36) DEFAULT NULL COMMENT 'min(3)',
+  `last_name` char(36) DEFAULT NULL COMMENT 'min(3)',
   `zip` int(5) unsigned zerofill DEFAULT NULL,
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
---
--- Constraints for dumped tables
---
+
+
 
 --
 -- Constraints for table `nerd_sessions`

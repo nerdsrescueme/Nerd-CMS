@@ -20,21 +20,21 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 
-
-CREATE TABLE IF NOT EXISTS `ref_country` (
-  `alpha2` char(2) NOT NULL,
-  `alpha3` char(3) NOT NULL,
+DROP TABLE IF EXISTS `nerd_countries`;
+CREATE TABLE IF NOT EXISTS `nerd_countries` (
+  `short` char(2) NOT NULL,
+  `long` char(3) NOT NULL,
   `numeric` varchar(3) NOT NULL,
-  `country` varchar(80) NOT NULL,
-  PRIMARY KEY (`alpha2`),
-  UNIQUE KEY `alpha3` (`alpha3`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `name` char(50) NOT NULL,
+  PRIMARY KEY (`short`),
+  UNIQUE KEY `long` (`long`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Dumping data for table `ref_country`
+-- Nerd Countries - Data
 --
 
-INSERT INTO `ref_country` (`alpha2`, `alpha3`, `numeric`, `country`) VALUES
+INSERT INTO `nerd_countries` (`short`, `long`, `numeric`, `name`) VALUES
 ('ao', 'ago', '024', 'Angola'),
 ('ai', 'aia', '660', 'Anguilla'),
 ('aq', 'ata', '010', 'Antarctica'),

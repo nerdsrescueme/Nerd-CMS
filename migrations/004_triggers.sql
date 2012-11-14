@@ -1,11 +1,6 @@
--- phpMyAdmin SQL Dump
--- version 3.5.2
--- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Aug 24, 2012 at 03:38 PM
--- Server version: 5.5.25a
--- PHP Version: 5.4.4
+-- Nerd-CMS data integrity triggers
+--
 
 SET FOREIGN_KEY_CHECKS=0;
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
@@ -30,6 +25,7 @@ DROP TRIGGER IF EXISTS `before_nerd_pages`;
 CREATE TRIGGER `before_nerd_pages`
   BEFORE UPDATE ON `nerd_pages` FOR EACH ROW
   BEGIN
+ -- INSERT old data into the page history
     INSERT INTO `nerd_page_history` (
       `page_id`,
       `site_id`,
@@ -46,6 +42,18 @@ CREATE TRIGGER `before_nerd_pages`
       OLD.`uri`,
       OLD.`description`,
       OLD.`status`);
+
+ -- DELETE all but the last 10 versions of this page.
+    DELETE FROM `nerd_page_history` WHERE `created_at` NOT IN (
+      SELECT `created_at`
+      FROM (
+        SELECT `created_at`
+          FROM `nerd_page_history`
+          WHERE `page_id` = OLD.`id`
+          ORDER BY `created_at` DESC
+          LIMIT 10
+      ) `history`
+    );
   END
 $$
 DELIMITER ;
