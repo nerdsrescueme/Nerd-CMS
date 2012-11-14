@@ -31,6 +31,18 @@ CREATE TABLE IF NOT EXISTS `nerd_sessions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 
+-- Timestamp trigger
+
+DELIMITER $$
+DROP TRIGGER IF EXISTS `timestamp_nerd_session`;
+CREATE TRIGGER `timestamp_nerd_session`
+  BEFORE INSERT ON `nerd_sessions` FOR EACH ROW
+  BEGIN
+    SET NEW.`created_at` = CURRENT_TIMESTAMP();
+  END
+$$
+DELIMITER ;
+
 --
 -- Nerd Cities
 --
@@ -101,6 +113,18 @@ CREATE TABLE IF NOT EXISTS `nerd_pages` (
   KEY `site_id` (`site_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=4 ;
 
+-- Timestamp trigger
+
+DELIMITER $$
+DROP TRIGGER IF EXISTS `timestamp_nerd_pages`;
+CREATE TRIGGER `timestamp_nerd_pages`
+  BEFORE INSERT ON `nerd_pages` FOR EACH ROW
+  BEGIN
+    SET NEW.`created_at` = CURRENT_TIMESTAMP();
+  END
+$$
+DELIMITER ;
+
 
 --
 -- Nerd Page History
@@ -118,6 +142,52 @@ CREATE TABLE IF NOT EXISTS `nerd_page_history` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`page_id`,`created_at`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;
+
+--
+-- Versioning trigger
+--
+-- Automatically add old data into the versioning table before updating an
+-- older page record.
+--
+
+DELIMITER $$
+DROP TRIGGER IF EXISTS `before_nerd_pages`;
+CREATE TRIGGER `before_nerd_pages`
+  BEFORE UPDATE ON `nerd_pages` FOR EACH ROW
+  BEGIN
+ -- INSERT old data into the page history
+    INSERT INTO `nerd_page_history` (
+      `page_id`,
+      `site_id`,
+      `title`,
+      `subtitle`,
+      `uri`,
+      `description`,
+      `status`
+    ) VALUES (
+      OLD.`id`,
+      OLD.`site_id`,
+      OLD.`title`,
+      OLD.`subtitle`,
+      OLD.`uri`,
+      OLD.`description`,
+      OLD.`status`);
+
+ -- DELETE all but the last 10 versions of this page.
+    DELETE FROM `nerd_page_history` WHERE `created_at` NOT IN (
+      SELECT `created_at`
+      FROM (
+        SELECT `created_at`
+          FROM `nerd_page_history`
+          WHERE `page_id` = OLD.`id`
+          ORDER BY `created_at` DESC
+          LIMIT 10
+      ) `history`
+    );
+  END
+$$
+DELIMITER ;
+
 
 --
 -- Nerd Pages - Data
@@ -320,6 +390,17 @@ CREATE TABLE IF NOT EXISTS `nerd_users` (
   KEY `locaters` (`username`,`email`,`password`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;
 
+-- Timestamp trigger
+
+DELIMITER $$
+DROP TRIGGER IF EXISTS `timestamp_nerd_users`;
+CREATE TRIGGER `timestamp_nerd_users`
+  BEFORE INSERT ON `nerd_users` FOR EACH ROW
+  BEGIN
+    SET NEW.`created_at` = CURRENT_TIMESTAMP();
+  END
+$$
+DELIMITER ;
 
 --
 -- Nerd Users Metadata
