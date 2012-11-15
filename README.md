@@ -6,7 +6,7 @@ Its easy-to-use, browser based interface makes content creation and editing as
 easy as can be. The UI uses cutting edge Javascript and HTML5 features resulting
 in a simple, intuitive way to manage your web site.
 
-Nerd CMS was built...
+Nerd CMS was built... figure me out.
 
 Features
 --------
