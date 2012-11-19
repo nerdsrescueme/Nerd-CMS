@@ -1,5 +1,5 @@
 {
-    "hash": "83ea495578d416c45da281ec1ac00fcd",
+    "hash": "6b1bf4111629f29694b89c574f04aa38",
     "packages": [
         {
             "name": "dflydev/markdown",
@@ -59,6 +59,51 @@
             "keywords": [
                 "markdown"
             ]
+        },
+        {
+            "name": "kriswallsmith/buzz",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "http://github.com/kriswallsmith/Buzz.git",
+                "reference": "988bf14201ffbed940f23b42f87302e6adec4c21"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/kriswallsmith/Buzz/archive/988bf14201ffbed940f23b42f87302e6adec4c21.zip",
+                "reference": "988bf14201ffbed940f23b42f87302e6adec4c21",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "suggest": {
+                "ext-curl": "*"
+            },
+            "time": "1345206213",
+            "type": "library",
+            "installation-source": "source",
+            "autoload": {
+                "psr-0": {
+                    "Buzz": "lib/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kris Wallsmith",
+                    "email": "kris.wallsmith@gmail.com",
+                    "homepage": "http://kriswallsmith.net/"
+                }
+            ],
+            "description": "Lightweight HTTP client",
+            "homepage": "https://github.com/kriswallsmith/Buzz",
+            "keywords": [
+                "curl",
+                "http client"
+            ]
         }
     ],
     "packages-dev": null,
@@ -68,6 +113,7 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "dflydev/markdown": 20,
+        "kriswallsmith/buzz": 20,
         "apigen/apigen": 20,
         "pdepend/pdepend": 20,
         "phing/phing": 20,

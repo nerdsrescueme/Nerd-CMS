@@ -16,7 +16,7 @@
 	"require": {
 		"php": ">=5.4.4",
 		"dflydev/markdown": "1.0.x-dev",
-		"twig/twig": "1.*"
+        "kriswallsmith/buzz": "dev-master"
 	},
 
     "require-dev": {
