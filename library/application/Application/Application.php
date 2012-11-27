@@ -38,6 +38,12 @@ class Application implements \Nerd\Design\Initializable
 
     public static function __initialize()
     {
+
+$word = \Application\Model\Words::findOneByWord('love');
+die(var_dump($word->difference(['as', 'the', 'spector'])));
+
+
+
         $arr = ['test', 'me'];
 
         $app = static::instance();
