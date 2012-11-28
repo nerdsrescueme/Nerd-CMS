@@ -25,10 +25,6 @@ class Words extends \Nerd\Model
      * @var string
      */
     protected static $table = 'nerd_words';
-    protected static $columns;
-    protected static $constraints;
-    protected static $columnNames;
-    protected static $primary;
 
     /**
      * Common SQL search string
