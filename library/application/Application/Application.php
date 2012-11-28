@@ -26,7 +26,7 @@ class Application implements \Nerd\Design\Initializable
     use \Nerd\Design\Creational\Singleton
       , \Nerd\Design\Eventable;
 
-    public $me;
+    public $admin;
     public $auth;
     public $session;
     public $cache;
@@ -38,21 +38,8 @@ class Application implements \Nerd\Design\Initializable
 
     public static function __initialize()
     {
-
-$word = \Application\Model\Words::findOneByWord('love');
-die(var_dump($word->difference(['as', 'the', 'spector'])));
-
-
-
-        $arr = ['test', 'me'];
-
         $app = static::instance();
         $uri = Url::current()->uri();
-
-        $user = Model\User::findOneById(1);
-
-        $app->auth     = new Auth($user);
-        $app->me       = $app->auth->user;
 
         $app->response = Response::instance();
         $app->session  = Session::instance();

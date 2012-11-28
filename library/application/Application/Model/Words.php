@@ -19,8 +19,22 @@ use Nerd\Str\Compare;
  */
 class Words extends \Nerd\Model
 {
+    /**
+     * Corresponding table
+     *
+     * @var string
+     */
     protected static $table = 'nerd_words';
+    protected static $columns;
+    protected static $constraints;
+    protected static $columnNames;
+    protected static $primary;
 
+    /**
+     * Common SQL search string
+     *
+     * @var string
+     */
     private static $sql = 'SELECT `word` FROM `nerd_words` WHERE `word` LIKE ?';
 
     /**
@@ -56,6 +70,11 @@ class Words extends \Nerd\Model
         return static::findAll(static::$sql, strtolower("%{$part}%"));
     }
 
+    /**
+     * Find similar words
+     *
+     * @return   collection
+     */
     public function similar()
     {
         return static::findAll(static::$sql, $this->word);

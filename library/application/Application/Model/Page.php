@@ -25,6 +25,10 @@ class Page extends \Nerd\Model
     const PAGE_404  = '404';
 
     protected static $table = 'nerd_pages';
+    protected static $columns;
+    protected static $constraints;
+    protected static $columnNames;
+    protected static $primary;
 
     /**
      * Search pages
